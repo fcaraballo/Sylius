@@ -194,18 +194,6 @@ class Address implements AddressInterface
      */
     public function setProvince(ProvinceInterface $province = null)
     {
-        if (null === $this->country) {
-            throw new \BadMethodCallException('Cannot define province on address without assigned country');
-        }
-
-        if (null !== $province && !$this->country->hasProvince($province)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Cannot set province "%s", because it does not belong to country "%s"',
-                $province->getName(),
-                $this->country->getName()
-            ));
-        }
-
         $this->province = $province;
     }
 
